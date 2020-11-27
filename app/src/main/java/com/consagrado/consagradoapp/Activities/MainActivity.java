@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void openLogin(View view){
-        Intent it = new Intent(this, LoginActivity.class);
+    public void openInitial(View view){
+        Intent it = new Intent(this, InitialActivity.class);
         startActivity(it);
 //        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

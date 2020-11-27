@@ -8,10 +8,10 @@
     tools:context=".Activities.MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="openLogin"
+        android:onClick="openInitial"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
