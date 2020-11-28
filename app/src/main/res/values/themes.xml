@@ -29,4 +29,8 @@
     <style name="Button.Yellow" parent="ThemeOverlay.AppCompat">
         <item name="backgroundTint">@color/yellow_main</item>
     </style>
+
+    <style name="Button.White" parent="ThemeOverlay.AppCompat">
+        <item name="backgroundTint">@color/white_smoke</item>
+    </style>
 </resources>
