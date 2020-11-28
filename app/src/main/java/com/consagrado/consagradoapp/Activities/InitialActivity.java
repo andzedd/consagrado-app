@@ -17,18 +17,15 @@ public class InitialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
-        Float metrics = getResources().getDisplayMetrics().density;
-        System.out.println(metrics + " -------------------------------------------");
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void openRegister(View view){
         Intent it = new Intent(this, RegisterActivity.class);
+        startActivity(it);
+    }
+
+    public void openLogin(View view){
+        Intent it = new Intent(this, LoginActivity.class);
         startActivity(it);
     }
 }

@@ -18,9 +18,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="199dp"
+            android:layout_width="200dp"
             android:layout_height="76dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
             android:text="Bem vindo, Queridão"
             android:textColor="@color/black"
@@ -30,22 +30,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnInitialLogin"
             style="@style/Button.Black"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:background="@drawable/round_button"
+            android:onClick="openLogin"
             android:text="Entrar"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/btnInitialRegister"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnInitialRegister"
             style="@style/Button.Yellow"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -57,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/button" />
+            app:layout_constraintStart_toEndOf="@+id/btnInitialLogin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
