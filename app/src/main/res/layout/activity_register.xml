@@ -143,6 +143,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ImageView
+            android:id="@+id/imgVisivelR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/inputSenha"
+            app:layout_constraintEnd_toEndOf="@+id/inputSenha"
+            app:layout_constraintTop_toTopOf="@+id/inputSenha"
+            app:srcCompat="@drawable/ic_visibility" />
+
+        <ImageView
+            android:id="@+id/imgVisivelRC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/inputRSenha"
+            app:layout_constraintEnd_toEndOf="@+id/inputRSenha"
+            app:layout_constraintTop_toTopOf="@+id/inputRSenha"
+            app:srcCompat="@drawable/ic_visibility" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
