@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "912910990158",
+    "firebase_url": "https://consagradoapp-bab1f.firebaseio.com",
+    "project_id": "consagradoapp-bab1f",
+    "storage_bucket": "consagradoapp-bab1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912910990158:android:56bf3540b1b63493b57c1f",
+        "android_client_info": {
+          "package_name": "com.consagrado.consagradoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912910990158-abvgffib2btp5tp736107v6jflknv2s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn2s6VibqHgARlR1J3hYs837tsuXp3LbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912910990158-abvgffib2btp5tp736107v6jflknv2s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
