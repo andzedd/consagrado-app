@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,14 +48,56 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public boolean validaCampos(){
-        if(nome.getText().toString().equals("") || email.getText().toString().equals("") || dataNasc.getText().toString().equals("") || txtSenha.getText().toString().equals("") || txtSenhaR.getText().toString().equals("")){
-            Toast.makeText(this, "Preencha os campos corretamente!", Toast.LENGTH_SHORT).show();
+        String sNome = nome.getText().toString().trim();
+        String sEmail = email.getText().toString().trim();
+        String sDataNasc = dataNasc.getText().toString().trim();
+        String senha = txtSenha.getText().toString().trim();
+        String cSenha = txtSenhaR.getText().toString().trim();
+
+        if(sNome.isEmpty()){
+            nome.setError("Por favor preencha seu nome!");
+            nome.requestFocus();
             return false;
         }
+        if(sEmail.isEmpty()){
+            email.setError("Por favor preencha seu email!");
+            email.requestFocus();
+            return false;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()){
+            email.setError("Por favor insira um email válido!");
+            email.requestFocus();
+            return false;
+        }
+        if(sDataNasc.isEmpty()){
+            dataNasc.setError("Por favor preencha sua data de nascimento!");
+            dataNasc.requestFocus();
+            return false;
+        }
+        if(senha.isEmpty()){
+            txtSenha.setError("Por favor preencha sua senha!");
+            txtSenha.requestFocus();
+            return false;
+        }
+        if(cSenha.isEmpty()){
+            txtSenhaR.setError("Por favor confirme sua senha!");
+            txtSenhaR.requestFocus();
+            return false;
+        }
+
         if(!txtSenha.getText().toString().equals(txtSenhaR.getText().toString())){
-            Toast.makeText(this, "Senhas diferem!", Toast.LENGTH_SHORT).show();
+            txtSenhaR.setError("Senhas diferem!");
+            txtSenhaR.setText("");
+            txtSenhaR.requestFocus();
             return false;
         }
+
+        if(senha.length() < 6){
+            txtSenha.setError("A senha precisa ter ao menos 6 caracteres!");
+            txtSenha.requestFocus();
+            return false;
+        }
+
         if(!validaData()){
             return false;
         }
