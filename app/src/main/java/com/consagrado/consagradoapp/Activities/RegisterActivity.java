@@ -4,17 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.consagrado.consagradoapp.DAO.UserDAO;
 import com.consagrado.consagradoapp.Helper.MaskEditUtil;
-import com.consagrado.consagradoapp.Model.User;
 import com.consagrado.consagradoapp.R;
 
 import java.text.SimpleDateFormat;
@@ -24,9 +20,7 @@ import java.util.Date;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText txtSenha, txtSenhaR, dataNasc, nome, email;
     private ImageView visibilidadeSenha, visibilidadeSenhaR;
-    private ProgressBar progressBar;
     private Button register;
-    private UserDAO dao = new UserDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         register = findViewById(R.id.btnRegister);
         nome = findViewById(R.id.inputName);
         email = findViewById(R.id.inputEmail);
-        progressBar = findViewById(R.id.progressBar);
 
         dataNasc.addTextChangedListener(MaskEditUtil.insert(MaskEditUtil.DATA, dataNasc));
 
@@ -54,74 +47,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public boolean validaCampos(){
-        String sNome = nome.getText().toString().trim();
-        String sEmail = email.getText().toString().trim();
-        String sDataNasc = dataNasc.getText().toString().trim();
-        String senha = txtSenha.getText().toString().trim();
-        String cSenha = txtSenhaR.getText().toString().trim();
-
-        if(sNome.isEmpty()){
-            nome.setError("Por favor preencha seu nome!");
-            nome.requestFocus();
+        if(nome.getText().toString().equals("") || email.getText().toString().equals("") || dataNasc.getText().toString().equals("") || txtSenha.getText().toString().equals("") || txtSenhaR.getText().toString().equals("")){
+            Toast.makeText(this, "Preencha os campos corretamente!", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(sEmail.isEmpty()){
-            email.setError("Por favor preencha seu email!");
-            email.requestFocus();
-            return false;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()){
-            email.setError("Por favor insira um email válido!");
-            email.requestFocus();
-            return false;
-        }
-        if(sDataNasc.isEmpty()){
-            dataNasc.setError("Por favor preencha sua data de nascimento!");
-            dataNasc.requestFocus();
-            return false;
-        }
-        if(senha.isEmpty()){
-            txtSenha.setError("Por favor preencha sua senha!");
-            txtSenha.requestFocus();
-            return false;
-        }
-        if(cSenha.isEmpty()){
-            txtSenhaR.setError("Por favor confirme sua senha!");
-            txtSenhaR.requestFocus();
-            return false;
-        }
-
         if(!txtSenha.getText().toString().equals(txtSenhaR.getText().toString())){
-            txtSenhaR.setError("Senhas diferem!");
-            txtSenhaR.setText("");
-            txtSenhaR.requestFocus();
+            Toast.makeText(this, "Senhas diferem!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        if(senha.length() < 6){
-            txtSenha.setError("A senha precisa ter ao menos 6 caracteres!");
-            txtSenha.requestFocus();
-            return false;
-        }
-
         if(!validaData()){
             return false;
         }
-
-        progressBar.setVisibility(View.VISIBLE);
-        try{
-            User user = new User(sNome, sEmail, senha, sDataNasc);
-            if (dao.insert(user)) {
-                progressBar.setVisibility(View.GONE);
-                return true;
-            } else {
-                progressBar.setVisibility(View.GONE);
-                return false;
-            }
-        } catch (ClassNotFoundException e){
-            e.printStackTrace();
-            return false;
-        }
+        return true;
     }
 
     public boolean validaData(){
@@ -136,12 +73,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Integer mes                 = Integer.parseInt(nascimento.substring(3,5));
         Integer ano                 = Integer.parseInt(nascimento.substring(nascimento.length() - 4));
 
-        if(dia < 1 || dia > 31){
+        if(dia <= 0 || dia > 31){
             Toast.makeText(this, "Dia inválido", Toast.LENGTH_SHORT).show();
             dataNasc.setText("");
             dataNasc.requestFocus();
             return false;
-        } else if(mes < 1 || mes > 12){
+        } else if(mes <= 0 || mes > 12){
             Toast.makeText(this, "Mês inválido", Toast.LENGTH_SHORT).show();
             dataNasc.setText("");
             dataNasc.requestFocus();
@@ -191,8 +128,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 if(validaCampos()){
                     Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
                     limpaCampos();
-                } else {
-                    Toast.makeText(this, "Erro ao registrar novo usuário!", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
