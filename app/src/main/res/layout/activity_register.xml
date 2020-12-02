@@ -32,18 +32,19 @@
 
         <EditText
             android:id="@+id/inputName"
-            android:drawableLeft="@drawable/ic_account_gray"
-            android:drawablePadding="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_account"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Nome"
             android:inputType="textPersonName"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,18 +52,19 @@
 
         <EditText
             android:id="@+id/inputEmail"
-            android:drawableLeft="@drawable/ic_email_gray"
-            android:drawablePadding="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_email"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="E-mail"
             android:inputType="textPersonName"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -71,18 +73,19 @@
 
         <EditText
             android:id="@+id/inputSenha"
-            android:drawableLeft="@drawable/ic_lock_gray"
-            android:drawablePadding="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_lock"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Senha"
             android:inputType="textPersonName|textPassword"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -91,18 +94,19 @@
 
         <EditText
             android:id="@+id/inputRSenha"
-            android:drawableLeft="@drawable/ic_lock_gray"
-            android:drawablePadding="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_lock"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Repetir Senha"
             android:inputType="textPersonName|textPassword"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -111,18 +115,19 @@
 
         <EditText
             android:id="@+id/inputBirth"
-            android:drawableLeft="@drawable/ic_date_gray"
-            android:drawablePadding="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_date"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Data Nascimento"
             android:inputType="date"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +168,7 @@
             app:layout_constraintTop_toTopOf="@+id/inputRSenha"
             app:srcCompat="@drawable/ic_visibility" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -174,4 +180,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_full" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
