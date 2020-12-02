@@ -10,6 +10,11 @@ public class User {
 
     public User() {
     }
+    public User(String nome, String email, String dataNasc) {
+        this.nome = nome;
+        this.email = email;
+        this.dataNasc = dataNasc;
+    }
 
     public User(String nome, String email, String senha, String dataNasc) {
         this.nome = nome;

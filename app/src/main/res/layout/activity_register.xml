@@ -157,7 +157,6 @@
             app:layout_constraintEnd_toEndOf="@+id/inputSenha"
             app:layout_constraintTop_toTopOf="@+id/inputSenha"
             app:srcCompat="@drawable/ic_visibility" />
-
         <ImageView
             android:id="@+id/imgVisivelRC"
             android:layout_width="wrap_content"
@@ -167,6 +166,7 @@
             app:layout_constraintEnd_toEndOf="@+id/inputRSenha"
             app:layout_constraintTop_toTopOf="@+id/inputRSenha"
             app:srcCompat="@drawable/ic_visibility" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

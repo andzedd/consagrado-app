@@ -3,15 +3,19 @@ package com.consagrado.consagradoapp.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.consagrado.consagradoapp.Controller.UserRegistration;
 import com.consagrado.consagradoapp.Helper.MaskEditUtil;
+import com.consagrado.consagradoapp.Model.User;
 import com.consagrado.consagradoapp.R;
 
 import java.text.SimpleDateFormat;
@@ -41,7 +45,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         email = findViewById(R.id.inputEmail);
 
         dataNasc.addTextChangedListener(MaskEditUtil.insert(MaskEditUtil.DATA, dataNasc));
-
         visibilidadeSenha.setOnClickListener(this);
         visibilidadeSenhaR.setOnClickListener(this);
         register.setOnClickListener(this);
@@ -74,6 +77,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             dataNasc.requestFocus();
             return false;
         }
+        if(!validaData()){
+            return false;
+        }
         if(senha.isEmpty()){
             txtSenha.setError("Por favor preencha sua senha!");
             txtSenha.requestFocus();
@@ -98,9 +104,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
-        if(!validaData()){
-            return false;
-        }
+        User user = new User(sNome, sEmail, senha, sDataNasc);
+        UserRegistration uR = new UserRegistration();
+        uR.register(user, this);
         return true;
     }
 
@@ -117,18 +123,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Integer ano                 = Integer.parseInt(nascimento.substring(nascimento.length() - 4));
 
         if(dia <= 0 || dia > 31){
-            Toast.makeText(this, "Dia inválido", Toast.LENGTH_SHORT).show();
             dataNasc.setText("");
+            dataNasc.setError("Dia inválido!");
             dataNasc.requestFocus();
             return false;
         } else if(mes <= 0 || mes > 12){
-            Toast.makeText(this, "Mês inválido", Toast.LENGTH_SHORT).show();
             dataNasc.setText("");
+            dataNasc.setError("Mês inválido!");
             dataNasc.requestFocus();
             return false;
         } else if (year - ano < 18){
-            Toast.makeText(this, "Você precisa ter pelo menos 18 anos para se cadastrar!", Toast.LENGTH_LONG).show();
             dataNasc.setText("");
+            dataNasc.setError("Você precisa ter pelo menos 18 anos para se cadastrar!");
             dataNasc.requestFocus();
             return false;
         }
@@ -169,8 +175,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnRegister:
                 if(validaCampos()){
-                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                    limpaCampos();
+                    (new Handler()).postDelayed(this::limpaCampos, 1000);
+                    nome.requestFocus();
                 }
                 break;
         }
