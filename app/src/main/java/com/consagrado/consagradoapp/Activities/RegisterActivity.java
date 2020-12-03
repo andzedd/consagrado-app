@@ -142,12 +142,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
-    public void limpaCampos(){
+    private void limpaCampos(){
         txtSenha.setText("");
         txtSenhaR.setText("");
         dataNasc.setText("");
         nome.setText("");
         email.setText("");
+        nome.requestFocus();
     }
 
     @Override
@@ -175,8 +176,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnRegister:
                 if(validaCampos()){
-                    (new Handler()).postDelayed(this::limpaCampos, 1000);
-                    nome.requestFocus();
+                    (new Handler()).postDelayed(this::limpaCampos, 1500);
                 }
                 break;
         }

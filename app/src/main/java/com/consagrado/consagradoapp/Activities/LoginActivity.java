@@ -30,6 +30,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         iniciaComponentes();
+        verifyLoggeduser();
+    }
+
+    private void verifyLoggeduser(){
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
+            finish();
+        }
     }
 
     private void userLogin(){
@@ -40,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
                         finish();
+                        startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
                     } else {
                         Toast.makeText(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_LONG).show();
                         editTextSenha.setText("");
