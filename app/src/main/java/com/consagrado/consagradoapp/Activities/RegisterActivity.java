@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText txtSenha, txtSenhaR, dataNasc, nome, email;
     private ImageView visibilidadeSenha, visibilidadeSenhaR;
     private Button register;
-    public static ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,12 +119,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         SimpleDateFormat yf = new SimpleDateFormat("yyyy");
         SimpleDateFormat mf = new SimpleDateFormat("MM");
 
-        final Integer year = Integer.parseInt(yf.format(c));
+        final int year = Integer.parseInt(yf.format(c));
 
         String nascimento           = dataNasc.getText().toString();
-        Integer dia                 = Integer.parseInt(nascimento.substring(0,2));
-        Integer mes                 = Integer.parseInt(nascimento.substring(3,5));
-        Integer ano                 = Integer.parseInt(nascimento.substring(nascimento.length() - 4));
+        int dia                 = Integer.parseInt(nascimento.substring(0,2));
+        int mes                 = Integer.parseInt(nascimento.substring(3,5));
+        int ano                 = Integer.parseInt(nascimento.substring(nascimento.length() - 4));
 
         if(dia <= 0 || dia > 31){
             dataNasc.setText("");
@@ -153,6 +153,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nome.setText("");
         email.setText("");
         nome.requestFocus();
+
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -183,7 +185,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 if(validaCampos()){
                     (new Handler()).postDelayed(this::limpaCampos, 1500);
                 } else {
-                    RegisterActivity.progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
                 break;
         }

@@ -47,7 +47,6 @@ public class UserRegistration {
                                     } else {
                                         Toast.makeText(context, "Erro ao cadastrar usuário! Tente novamente.", Toast.LENGTH_LONG).show();
                                     }
-                                    RegisterActivity.progressBar.setVisibility(View.GONE);
                                 }
                             });
                         } else {
@@ -69,7 +68,6 @@ public class UserRegistration {
                                     "Erro: " + erroExcecao,
                                     Toast.LENGTH_LONG).show();
                         }
-                        RegisterActivity.progressBar.setVisibility(View.GONE);
                     }
                 });
     }
