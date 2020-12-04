@@ -167,6 +167,15 @@
             app:layout_constraintTop_toTopOf="@+id/inputRSenha"
             app:srcCompat="@drawable/ic_visibility" />
 
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputRSenha" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

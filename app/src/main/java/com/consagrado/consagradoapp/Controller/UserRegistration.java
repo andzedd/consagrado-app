@@ -3,6 +3,7 @@ package com.consagrado.consagradoapp.Controller;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import com.consagrado.consagradoapp.Activities.CartActivity;
 import com.consagrado.consagradoapp.Activities.LoginActivity;
 import com.consagrado.consagradoapp.Activities.OptionsActivity;
+import com.consagrado.consagradoapp.Activities.RegisterActivity;
 import com.consagrado.consagradoapp.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +47,7 @@ public class UserRegistration {
                                     } else {
                                         Toast.makeText(context, "Erro ao cadastrar usuário! Tente novamente.", Toast.LENGTH_LONG).show();
                                     }
+                                    RegisterActivity.progressBar.setVisibility(View.GONE);
                                 }
                             });
                         } else {
@@ -66,6 +69,7 @@ public class UserRegistration {
                                     "Erro: " + erroExcecao,
                                     Toast.LENGTH_LONG).show();
                         }
+                        RegisterActivity.progressBar.setVisibility(View.GONE);
                     }
                 });
     }

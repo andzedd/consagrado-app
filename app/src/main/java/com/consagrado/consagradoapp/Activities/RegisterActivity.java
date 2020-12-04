@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.consagrado.consagradoapp.Controller.UserRegistration;
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText txtSenha, txtSenhaR, dataNasc, nome, email;
     private ImageView visibilidadeSenha, visibilidadeSenhaR;
     private Button register;
+    public static ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         register = findViewById(R.id.btnRegister);
         nome = findViewById(R.id.inputName);
         email = findViewById(R.id.inputEmail);
+        progressBar = findViewById(R.id.progressBarRegister);
 
+        progressBar.setVisibility(View.GONE);
         dataNasc.addTextChangedListener(MaskEditUtil.insert(MaskEditUtil.DATA, dataNasc));
         visibilidadeSenha.setOnClickListener(this);
         visibilidadeSenhaR.setOnClickListener(this);
@@ -175,8 +179,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 txtSenhaR.setSelection(txtSenhaR.getText().length());
                 break;
             case R.id.btnRegister:
+                progressBar.setVisibility(View.VISIBLE);
                 if(validaCampos()){
                     (new Handler()).postDelayed(this::limpaCampos, 1500);
+                } else {
+                    RegisterActivity.progressBar.setVisibility(View.GONE);
                 }
                 break;
         }

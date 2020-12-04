@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.consagrado.consagradoapp.R;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ImageView visibilidadeSenha;
     private FirebaseAuth mAuth;
     private Button btnLogin;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editTextSenha.setText("");
                         editTextEmail.requestFocus();
                     }
+                    progressBar.setVisibility(View.GONE);
                 }
             });
         }
@@ -92,7 +95,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextSenha       = findViewById(R.id.inputLoginSenha);
         visibilidadeSenha   = findViewById(R.id.imgVisivel);
         btnLogin            = findViewById(R.id.btnLogin);
+        progressBar         = findViewById(R.id.progressBarLogin);
 
+        progressBar.setVisibility(View.GONE);
         visibilidadeSenha.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
 
@@ -114,6 +119,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editTextSenha.setSelection(editTextSenha.getText().length());
                 break;
             case R.id.btnLogin:
+                progressBar.setVisibility(View.VISIBLE);
                 userLogin();
         }
     }
