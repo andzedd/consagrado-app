@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.consagrado.consagradoapp.Controller.UserRegistration;
+import com.consagrado.consagradoapp.Controller.UserController;
 import com.consagrado.consagradoapp.Helper.MaskEditUtil;
 import com.consagrado.consagradoapp.Model.User;
 import com.consagrado.consagradoapp.R;
@@ -109,8 +107,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         User user = new User(sNome, sEmail, senha, sDataNasc);
-        UserRegistration uR = new UserRegistration();
-        uR.register(user, this);
+        UserController uC = new UserController();
+        uC.register(user, this);
         return true;
     }
 

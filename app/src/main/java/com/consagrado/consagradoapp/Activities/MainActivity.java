@@ -8,8 +8,10 @@ import android.os.Handler;
 import android.view.View;
 
 import com.consagrado.consagradoapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +20,20 @@ public class MainActivity extends AppCompatActivity {
         (new Handler()).postDelayed(this::openInitial, 5000);
     }
 
+    public boolean verifyLoggeduser(){
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            return true;
+        }
+        return false;
+    }
+
     public void openInitial(){
-        Intent it = new Intent(this, InitialActivity.class);
-        startActivity(it);
+        if(verifyLoggeduser()){
+            startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
+        } else {
+            startActivity(new Intent(getApplicationContext(), InitialActivity.class));
+        }
         finish();
-//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

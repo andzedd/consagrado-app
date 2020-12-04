@@ -9,18 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConsagradoApp">
-            <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.CartActivity"></activity>
-        <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.OptionsActivity" />
-        <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.LoginActivity" />
-        <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.RegisterActivity" />
-        <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.InitialActivity" />
-        <activity android:windowSoftInputMode="adjustPan"
-            android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.RecoverActivity"></activity>
+        <activity
+            android:name=".Activities.CartActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.OptionsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.InitialActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

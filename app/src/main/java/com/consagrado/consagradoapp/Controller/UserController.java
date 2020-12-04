@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserRegistration {
+public class UserController {
     private FirebaseAuth mAuth;
 
     public void register(User user, Context context){
@@ -50,25 +50,48 @@ public class UserRegistration {
                                 }
                             });
                         } else {
-                            String erroExcecao = "";
+                            String erro = "";
                             try{
                                 throw task.getException();
                             } catch (FirebaseAuthWeakPasswordException e ){
-                                erroExcecao = "Digite uma senha mais forte!";
+                                erro = "Digite uma senha mais forte!";
                             } catch (FirebaseAuthInvalidCredentialsException e ){
-                                erroExcecao = "Email inválido!";
+                                erro = "Email inválido!";
                             } catch (FirebaseAuthUserCollisionException e){
-                                erroExcecao = "Este email já está cadastrado!";
+                                erro = "Este email já está cadastrado!";
                             } catch (Exception e){
-                                erroExcecao = "ao cadastrar usuário: " + e.getMessage();
+                                erro = "ao cadastrar usuário: " + e.getMessage();
                                 e.printStackTrace();
                             }
 
                             Toast.makeText(context,
-                                    "Erro: " + erroExcecao,
+                                    "Erro: " + erro,
                                     Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+    }
+
+    public void recoverPassword(String email, Context context){
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(context, "Um link de recuperação foi enviado para o email informado!", Toast.LENGTH_LONG).show();
+                } else {
+                    String erro = "";
+                    try{
+                        throw task.getException();
+                    } catch (FirebaseAuthInvalidCredentialsException e){
+                        erro = "Email inválido!";
+                    } catch (Exception e){
+                        erro = e.getMessage();
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(context, "Erro: " + erro, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }

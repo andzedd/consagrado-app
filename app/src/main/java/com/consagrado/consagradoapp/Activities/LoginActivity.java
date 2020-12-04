@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.consagrado.consagradoapp.R;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private TextView btnEsqueceu;
     private EditText editTextEmail, editTextSenha;
     private ImageView visibilidadeSenha;
     private FirebaseAuth mAuth;
@@ -32,14 +34,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         iniciaComponentes();
-        verifyLoggeduser();
-    }
-
-    private void verifyLoggeduser(){
-        if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
-            finish();
-        }
     }
 
     private void userLogin(){
@@ -91,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void iniciaComponentes(){
+        btnEsqueceu         = findViewById(R.id.txtEsqueceu);
         editTextEmail       = findViewById(R.id.inputLoginEmail);
         editTextSenha       = findViewById(R.id.inputLoginSenha);
         visibilidadeSenha   = findViewById(R.id.imgVisivel);
@@ -98,6 +93,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressBar         = findViewById(R.id.progressBarLogin);
 
         progressBar.setVisibility(View.GONE);
+
+        btnEsqueceu.setOnClickListener(this);
         visibilidadeSenha.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
 
@@ -121,6 +118,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLogin:
                 progressBar.setVisibility(View.VISIBLE);
                 userLogin();
+                break;
+            case R.id.txtEsqueceu:
+                startActivity(new Intent(this, RecoverActivity.class));
+                break;
         }
     }
 }
