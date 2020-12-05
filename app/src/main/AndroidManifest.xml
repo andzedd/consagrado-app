@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConsagradoApp">
-        <activity android:name=".Activities.RecoverActivity"></activity>
+        <activity android:name=".Activities.ChoiceActivity"></activity>
+        <activity android:name=".Activities.RecoverActivity" />
         <activity
             android:name=".Activities.CartActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Activities.OptionsActivity"
+            android:name=".Activities.RestaurantActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activities.LoginActivity"

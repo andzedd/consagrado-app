@@ -3,16 +3,12 @@ package com.consagrado.consagradoapp.Controller;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 
-import com.consagrado.consagradoapp.Activities.CartActivity;
-import com.consagrado.consagradoapp.Activities.LoginActivity;
-import com.consagrado.consagradoapp.Activities.OptionsActivity;
-import com.consagrado.consagradoapp.Activities.RegisterActivity;
+import com.consagrado.consagradoapp.Activities.RestaurantActivity;
 import com.consagrado.consagradoapp.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,7 +37,7 @@ public class UserController {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(context, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                                        Intent it = new Intent(context, OptionsActivity.class);
+                                        Intent it = new Intent(context, RestaurantActivity.class);
                                         ((Activity) context).finish();
                                         context.startActivity(it);
                                     } else {

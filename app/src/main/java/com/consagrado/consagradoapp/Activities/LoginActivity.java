@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         finish();
-                        startActivity(new Intent(getApplicationContext(), OptionsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ChoiceActivity.class));
                     } else {
                         Toast.makeText(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_LONG).show();
                         editTextSenha.setText("");
@@ -54,6 +54,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     progressBar.setVisibility(View.GONE);
                 }
             });
+        } else {
+            progressBar.setVisibility(View.GONE);
         }
     }
 
