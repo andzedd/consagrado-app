@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        limpaCampos();
                         finish();
                         startActivity(new Intent(getApplicationContext(), ChoiceActivity.class));
                     } else {
@@ -93,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         visibilidadeSenha   = findViewById(R.id.imgVisivel);
         btnLogin            = findViewById(R.id.btnLogin);
         progressBar         = findViewById(R.id.progressBarLogin);
+        editTextEmail.requestFocus();
 
         progressBar.setVisibility(View.GONE);
 
@@ -101,6 +103,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+    }
+
+    public void limpaCampos(){
+        editTextEmail.setText("");
+        editTextSenha.setText("");
     }
 
     @Override
@@ -122,6 +129,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 userLogin();
                 break;
             case R.id.txtEsqueceu:
+                limpaCampos();
                 startActivity(new Intent(this, RecoverActivity.class));
                 break;
         }

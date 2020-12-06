@@ -14,7 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.FirebaseDatabase;
@@ -81,6 +83,8 @@ public class UserController {
                         throw task.getException();
                     } catch (FirebaseAuthInvalidCredentialsException e){
                         erro = "Email inválido!";
+                    } catch (FirebaseAuthInvalidUserException e){
+                        erro = "Email não registrado!";
                     } catch (Exception e){
                         erro = e.getMessage();
                         e.printStackTrace();

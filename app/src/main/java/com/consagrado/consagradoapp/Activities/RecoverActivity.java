@@ -31,6 +31,7 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
         progressBar = findViewById(R.id.progressBarRecover);
         progressBar.setVisibility(View.GONE);
         btnEnviar.setOnClickListener(this);
+        editTextEmail.requestFocus();
     }
 
     public void limpaCampos(){
