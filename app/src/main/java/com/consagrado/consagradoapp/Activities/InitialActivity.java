@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.consagrado.consagradoapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class InitialActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnLogin, btnRegister;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void iniciaComponentes(){
+        mAuth = FirebaseAuth.getInstance();
         btnLogin = findViewById(R.id.btnInitialLogin);
         btnRegister = findViewById(R.id.btnInitialRegister);
         btnLogin.setOnClickListener(this);
@@ -35,8 +38,21 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void openLogin(){
-        Intent it = new Intent(this, LoginActivity.class);
-        startActivity(it);
+        if(verifyLoggeduser()){
+            startActivity(new Intent(this, ChoiceActivity.class));
+            finish();
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
+    }
+
+    public boolean verifyLoggeduser(){
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            return true;
+        }
+        return false;
     }
 
     @Override

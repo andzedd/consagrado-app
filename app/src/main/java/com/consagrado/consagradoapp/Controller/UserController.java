@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.consagrado.consagradoapp.Activities.ChoiceActivity;
 import com.consagrado.consagradoapp.Activities.RestaurantActivity;
 import com.consagrado.consagradoapp.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +40,7 @@ public class UserController {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(context, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                                        Intent it = new Intent(context, RestaurantActivity.class);
+                                        Intent it = new Intent(context, ChoiceActivity.class);
                                         ((Activity) context).finish();
                                         context.startActivity(it);
                                     } else {
